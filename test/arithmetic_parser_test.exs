@@ -22,12 +22,11 @@ defmodule ArithmeticParserTest do
 
   test "handles division by zero" do
     assert ArithmeticParser.evaluate("1 / 0") ==
-             {:error,
-              """
-              error: Division by zero at line 1
-              1 / 0
-                  ^
-              """}
+             """
+             error: Division by zero at line 1
+             1 / 0
+                 ^
+             """
   end
 
   test "visual error message indicates error start" do
@@ -39,6 +38,6 @@ defmodule ArithmeticParserTest do
         ^
     """
 
-    assert ArithmeticParser.evaluate(input) == {:error, expected_message}
+    assert ArithmeticParser.evaluate(input) == expected_message
   end
 end

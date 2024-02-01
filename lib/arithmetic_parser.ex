@@ -6,7 +6,7 @@ defmodule ArithmeticParser do
           evaluate_tree(str, tree)
 
         {:error, {line, :parser, ['syntax error before: ', details]}} ->
-          {:error, format_syntax_error(str, line, details)}
+          format_syntax_error(str, line, details)
       end
     end
   end
@@ -26,7 +26,7 @@ defmodule ArithmeticParser do
   end
 
   defp evaluate_tree(str, {:op_div, _, {:num, 0}, line}) do
-    {:error, error(str, "0", "error: Division by zero at line #{line}")}
+    error(str, "0", "error: Division by zero at line #{line}")
   end
 
   defp evaluate_tree(str, {:op_div, left, right, _line}) do
